@@ -14,10 +14,14 @@ import org.springframework.context.annotation.Configuration;
  */
 @Configuration
 public class RabbitMqTopicConfig {
-    //只接收一个topic
-    final static String MESSAGE="topic.message";
-    //接收多个topic
-    final static String MESSSAGES="topic.messages";
+    /**
+     * 只接收一个topic
+     */
+    private final static String MESSAGE="topic.message";
+    /**
+     * 接收多个topic
+     */
+    private final static String MESSSAGES="topic.messages";
     @Bean
     public Queue queueMessage(){
         return new Queue(RabbitMqTopicConfig.MESSAGE);

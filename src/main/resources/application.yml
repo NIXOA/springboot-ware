@@ -3,8 +3,19 @@ server:
 spring:
   application:
     name: base-ware
+#rabbitmq连接参数
   rabbitmq:
     host: 127.0.0.1
     port: 5672
     username: guest
     password: guest
+    #开启发送确认
+    publisher-confirms: true
+    #开启发送失败退回
+    publisher-returns: true
+    #开启ack
+    listener:
+      direct:
+        acknowledge-mode: manual
+      simple:
+        acknowledge-mode: manual
