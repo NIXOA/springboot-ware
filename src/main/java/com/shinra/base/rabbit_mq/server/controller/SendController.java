@@ -1,5 +1,7 @@
 package com.shinra.base.rabbit_mq.server.controller;
 
+import com.shinra.base.rabbit_mq.client.service.FountService;
+import com.shinra.base.rabbit_mq.server.service.FaountSenderService;
 import org.springframework.amqp.core.AmqpTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,6 +16,8 @@ import org.springframework.web.bind.annotation.RestController;
 public class SendController {
     @Autowired
     private AmqpTemplate amqpTemplate;
+    @Autowired
+    private FaountSenderService senderService;
 
     @RequestMapping("/rabbitSend")
     private String send(){
@@ -41,5 +45,10 @@ public class SendController {
         System.out.println("发送者说: "+context);
         this.amqpTemplate.convertAndSend("exchange","topic.messages",context);
         return context;
+    }
+
+    @RequestMapping("/test")
+    public void hello(){
+        senderService.send();
     }
 }
