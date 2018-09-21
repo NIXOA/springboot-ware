@@ -1,7 +1,6 @@
 package com.shinra.base.rabbit_mq.server.controller;
 
-import com.shinra.base.rabbit_mq.client.service.FountService;
-import com.shinra.base.rabbit_mq.server.service.FaountSenderService;
+import com.shinra.base.rabbit_mq.server.service.FanoutSenderService;
 import org.springframework.amqp.core.AmqpTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,7 +16,7 @@ public class SendController {
     @Autowired
     private AmqpTemplate amqpTemplate;
     @Autowired
-    private FaountSenderService senderService;
+    private FanoutSenderService senderService;
 
     @RequestMapping("/rabbitSend")
     private String send(){

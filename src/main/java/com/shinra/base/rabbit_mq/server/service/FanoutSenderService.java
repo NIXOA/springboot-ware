@@ -14,7 +14,7 @@ import java.time.LocalDateTime;
  * @date 2018/9/19 下午11:58
  */
 @Service
-public class FaountSenderService implements RabbitTemplate.ReturnCallback {
+public class FanoutSenderService implements RabbitTemplate.ReturnCallback {
     @Autowired
     private RabbitTemplate rabbitTemplatel;
 
@@ -30,7 +30,7 @@ public class FaountSenderService implements RabbitTemplate.ReturnCallback {
                 System.out.println("HelloSender发送消息成功");
             }
         });
-        this.rabbitTemplatel.convertAndSend("hello",context);
+        this.rabbitTemplatel.convertAndSend("fanoutExchange"," ",context);
     }
 
 

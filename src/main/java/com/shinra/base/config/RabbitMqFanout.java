@@ -25,7 +25,7 @@ public class RabbitMqFanout {
 
     @Bean
     FanoutExchange fanoutExchange(){
-        return new FanoutExchange("ABExchange");
+        return new FanoutExchange("fanoutExchange");
     }
 
     @Bean

@@ -5,19 +5,20 @@ import org.springframework.amqp.core.Message;
 import org.springframework.amqp.rabbit.annotation.RabbitHandler;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.stereotype.Service;
+
 import java.io.IOException;
 import java.time.LocalDateTime;
 
 /**
  * @author hexin
- * @date 2018/9/20 上午12:16
+ * @date 2018/9/21 下午11:32
  */
 @Service
-@RabbitListener(queues = "fanout-A")
-public class FountService {
+@RabbitListener(queues = "fanout-B")
+public class FountServiceB {
     @RabbitHandler
     public void process(String hello, Channel channel, Message message) {
-        System.out.println("HelloReceiver收到 ： "+hello+" 收到时间 "+ LocalDateTime.now());
+        System.out.println("HelloReceiverB收到 ： "+hello+" 收到时间 "+ LocalDateTime.now());
         try {
             //ack返回false，并重新回到队列
             channel.basicAck(message.getMessageProperties().getDeliveryTag(),false);
