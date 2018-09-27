@@ -1,4 +1,4 @@
-package com.shinra.base.config;
+package com.shinra.base.config.rabbitmq;
 
 import org.springframework.amqp.core.Queue;
 import org.springframework.context.annotation.Bean;
