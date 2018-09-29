@@ -14,9 +14,13 @@ import org.springframework.context.annotation.Configuration;
  */
 @Configuration
 public class RabbitMqFanout {
+    /**
+     * durable设置为true，当服务重启的时候这个队列将会存活。
+     * 也就是说队列被持久化了。同样的，交换机的durable也和队列同理。
+     */
     @Bean
     public Queue queueA(){
-        return new Queue("fanout-A");
+        return new Queue("fanout-A",true);
     }
     @Bean
     public Queue queueB(){
@@ -25,7 +29,7 @@ public class RabbitMqFanout {
 
     @Bean
     FanoutExchange fanoutExchange(){
-        return new FanoutExchange("fanoutExchange");
+        return new FanoutExchange("fanoutExchange",true,true);
     }
 
     @Bean

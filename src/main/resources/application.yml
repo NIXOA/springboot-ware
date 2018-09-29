@@ -9,11 +9,11 @@ spring:
     port: 5672
     username: guest
     password: guest
-    #开启发送确认
+    #消息发送确认
     publisher-confirms: true
     #开启发送失败退回
     publisher-returns: true
-    #开启ack
+    #消息消费确认(NONE：不确认,AUTO：自动确认,MANUAL：手动确认)
     listener:
       direct:
         acknowledge-mode: manual

@@ -16,16 +16,16 @@ import java.time.LocalDateTime;
 @RabbitListener(queues = "fanout-A")
 public class FountServiceA {
     @RabbitHandler
-    public void process(String hello, Channel channel, Message message) {
+    public void process(String hello, Channel channel, Message message) throws IOException {
         System.out.println("HelloReceiverA收到 ： "+hello+" 收到时间 "+ LocalDateTime.now());
         try {
-            //ack返回false，并重新回到队列
+            //消息成功接收，返回ACK
             channel.basicAck(message.getMessageProperties().getDeliveryTag(),false);
             System.out.println("receiver success!");
         }catch (IOException exception){
             exception.printStackTrace();
-            //丢弃这条消息
-            //channel.basicNack(message.getMessageProperties().getDeliveryTag(),false,false);
+            //接收失败，丢弃这条消息
+            channel.basicNack(message.getMessageProperties().getDeliveryTag(),false,false);
             System.out.println("receiver fail");
         }
     }

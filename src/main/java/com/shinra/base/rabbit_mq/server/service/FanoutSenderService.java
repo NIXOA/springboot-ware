@@ -18,6 +18,10 @@ public class FanoutSenderService implements RabbitTemplate.ReturnCallback {
     @Autowired
     private RabbitTemplate rabbitTemplatel;
 
+
+    /**
+     * 消息发送到Exchange之后确认已发送，触发回调。
+     */
     public void send(){
         String context="你好现在是:"+ LocalDateTime.now().toString()+"";
         System.out.println("HelloSender发送内容:"+context);
@@ -33,10 +37,12 @@ public class FanoutSenderService implements RabbitTemplate.ReturnCallback {
         this.rabbitTemplatel.convertAndSend("fanoutExchange"," ",context);
     }
 
-
-
+    /**
+     * 通过实现ReturnCallback接口，如果消息从交换器发送到对应队列失败时触发
+     * （比如根据发送消息时指定的routingKey找不到队列时会触发）
+     */
     @Override
-    public void returnedMessage(Message message, int i, String s, String s1, String s2) {
-        System.out.println("sender return success "+message.toString()+"==="+i+"==="+s+"==="+"s1"+"==="+"s2");
+    public void returnedMessage(Message message, int replayCode, String replayText, String exchange, String routingKey) {
+        System.out.println("sender return success "+message.toString()+"==="+replayCode+"==="+replayText+"==="+exchange+"==="+routingKey);
     }
 }
