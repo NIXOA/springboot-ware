@@ -20,7 +20,7 @@ public class RabbitMqFanout {
      */
     @Bean
     public Queue queueA(){
-        return new Queue("fanout-A",true);
+        return new Queue("fanout-A");
     }
     @Bean
     public Queue queueB(){
@@ -29,7 +29,7 @@ public class RabbitMqFanout {
 
     @Bean
     FanoutExchange fanoutExchange(){
-        return new FanoutExchange("fanoutExchange",true,true);
+        return new FanoutExchange("fanoutExchange");
     }
 
     @Bean
