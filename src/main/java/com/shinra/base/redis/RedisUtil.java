@@ -1,6 +1,7 @@
 package com.shinra.base.redis;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.ListOperations;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Component;
 import org.springframework.util.CollectionUtils;
@@ -530,6 +531,16 @@ public class RedisUtil {
             e.printStackTrace();
             return 0;
         }
+    }
+
+    public void lPush(String key,Object value){
+        ListOperations<Object, Object> list=redisTemplate.opsForList();
+        list.leftPush(key,value);
+    }
+
+    public List<Object> rPop(String key,long timeout,TimeUnit timeUnit){
+        ListOperations<Object, Object> list=redisTemplate.opsForList();
+        return (List<Object>) list.rightPop(key,timeout,timeUnit);
     }
 
 }

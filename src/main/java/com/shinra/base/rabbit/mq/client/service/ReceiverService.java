@@ -1,4 +1,4 @@
-package com.shinra.base.rabbit_mq.client.service;
+package com.shinra.base.rabbit.mq.client.service;
 
 import org.springframework.amqp.rabbit.annotation.RabbitHandler;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;

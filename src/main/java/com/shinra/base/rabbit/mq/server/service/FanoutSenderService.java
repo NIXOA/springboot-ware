@@ -1,4 +1,4 @@
-package com.shinra.base.rabbit_mq.server.service;
+package com.shinra.base.rabbit.mq.server.service;
 
 import org.springframework.amqp.core.Message;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;

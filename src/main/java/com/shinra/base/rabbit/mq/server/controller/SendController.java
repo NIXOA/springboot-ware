@@ -1,6 +1,6 @@
-package com.shinra.base.rabbit_mq.server.controller;
+package com.shinra.base.rabbit.mq.server.controller;
 
-import com.shinra.base.rabbit_mq.server.service.FanoutSenderService;
+import com.shinra.base.rabbit.mq.server.service.FanoutSenderService;
 import org.springframework.amqp.core.AmqpTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;

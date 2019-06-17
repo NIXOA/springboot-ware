@@ -1,4 +1,4 @@
-package com.shinra.base.rabbit_mq.client.service;
+package com.shinra.base.rabbit.mq.client.service;
 
 import com.rabbitmq.client.Channel;
 import org.springframework.amqp.core.Message;
