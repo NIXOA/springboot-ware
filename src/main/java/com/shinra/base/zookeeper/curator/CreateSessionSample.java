@@ -19,9 +19,9 @@ public class CreateSessionSample {
     private static CuratorFramework client;
 
     public static void main(String[] args) throws Exception {
-        client=createClient(null,URL);
+        client=createClient(URL);
         client.start();
-        createNode(PATH,"123");
+        createNode("123");
         System.out.println(getNodeData(client,PATH));
 
     }
@@ -30,12 +30,12 @@ public class CreateSessionSample {
     /**
      * 创建连接
      */
-    static CuratorFramework createClient(String nameSpace, String url) {
+    static CuratorFramework createClient(String url) {
         RetryPolicy retryPolicy = new ExponentialBackoffRetry(1000, 3);
         //使用fluent风格创建连接
         CuratorFramework client = CuratorFrameworkFactory.builder().connectString(url)
                 .sessionTimeoutMs(5000).connectionTimeoutMs(3000)
-                .retryPolicy(retryPolicy).namespace(nameSpace).build();
+                .retryPolicy(retryPolicy).namespace(null).build();
         //client.start();
         return CuratorFrameworkFactory.newClient(url, 5000, 3000, retryPolicy);
     }
@@ -44,12 +44,11 @@ public class CreateSessionSample {
     /**
      * 创建节点
      *
-     * @param path
      * @param data
      * @throws Exception
      */
-    private static void createNode(String path, String data) throws Exception {
-        client.create().creatingParentsIfNeeded().withMode(CreateMode.EPHEMERAL).forPath(path, data.getBytes());
+    private static void createNode(String data) throws Exception {
+        client.create().creatingParentsIfNeeded().withMode(CreateMode.EPHEMERAL).forPath(CreateSessionSample.PATH, data.getBytes());
     }
 
 

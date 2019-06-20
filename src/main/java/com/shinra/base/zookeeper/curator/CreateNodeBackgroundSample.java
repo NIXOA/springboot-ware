@@ -21,7 +21,7 @@ public class CreateNodeBackgroundSample {
     private static ExecutorService executorService= Executors.newFixedThreadPool(2);
 
     public static void main(String[] args) throws Exception {
-        client=CreateSessionSample.createClient(null,URL);
+        client=CreateSessionSample.createClient(URL);
         client.start();
         System.out.println("Main thread :"+Thread.currentThread().getName());
         //传入executor
