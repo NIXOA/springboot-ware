@@ -18,7 +18,7 @@ import java.util.concurrent.CountDownLatch;
  * @Date 2019/6/19 16:19
  */
 public class RecipesLock {
-    public static final String LOCK_PATH="/curator_recipes_lock_path";
+    private static final String LOCK_PATH="/curator_recipes_lock_path";
     private static final String URL = "47.96.89.221:2182";
 
     public static void main(String[] args) {
