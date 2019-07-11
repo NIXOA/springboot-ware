@@ -32,7 +32,7 @@ public class HttpServer {
         channel.closeFuture().sync();
     }
 
-    public void close(){
+    private void close(){
         bossGroup.shutdownGracefully();
         workGroup.shutdownGracefully();
     }

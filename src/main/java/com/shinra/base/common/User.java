@@ -17,6 +17,7 @@ public class User {
     private String key;
     private String jobName;
     private String jobGroup;
+    private String method;
 
     public User(String userName, String passWord,String key,String jobName,String group) {
         this.userName=userName;
@@ -25,4 +26,5 @@ public class User {
         this.jobName=jobName;
         this.jobGroup=group;
     }
+
 }
