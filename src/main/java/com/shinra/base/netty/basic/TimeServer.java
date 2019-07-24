@@ -10,8 +10,8 @@ import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
 
 /**
- * @Author Godzilla
- * @Date 2019/7/5 10:11
+ * @author Godzilla
+ * @since 2019/7/5
  */
 public class TimeServer {
 

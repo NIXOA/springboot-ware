@@ -39,9 +39,9 @@ public class QuartzServiceImpl implements QuartzService {
             //按新的cronExpression表达式重新构建trigger
             trigger = trigger.getTriggerBuilder().startAt(new Date()).withIdentity(triggerKey)
                     .withSchedule(scheduleBuilder).build();
-            //scheduler.rescheduleJob如果服务器当前时间与你的表达式配置的执行时间差在两小时以内时，
-            //动态修改就会出现立即执行的情况。所以这里设置执行时间从当前时间开始
-            //重新获取JobDataMap，并且更新参数
+            /*scheduler.rescheduleJob如果服务器当前时间与你的表达式配置的执行时间差在两小时以内时，
+            /动态修改就会出现立即执行的情况。所以这里设置执行时间从当前时间开始
+            重新获取JobDataMap，并且更新参数*/
             JobDataMap jobDataMap = trigger.getJobDataMap();
             jobDataMap.put("job", job);
 
